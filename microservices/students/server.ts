@@ -8,7 +8,7 @@ const app: Application = express();
 
 const port = process.env.PORT || 8002;
 
-app.use('/', (req: Request, res: Response, next:NextFunction)=> {
+app.use('/', (req: Request, res: Response, next: NextFunction) => {
     res.send('here we go')
 })
 
