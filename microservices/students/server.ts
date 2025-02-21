@@ -6,10 +6,10 @@ dotenv.config();
 
 const app: Application = express();
 
-const port = process.env.PORT || 8002;
+const port = process.env.PORT || 8001;
 
 app.use('/', (req: Request, res: Response, next: NextFunction) => {
-    res.send('here we go')
+    res.send('here we go: students')
 })
 
 app.listen(port, () => {

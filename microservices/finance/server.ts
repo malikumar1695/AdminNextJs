@@ -5,11 +5,11 @@ dotenv.config();
 const app: Application = express();
 
 
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 8003;
 
 app.use('/', (req: Request, res: Response, next: NextFunction) => {
 
-    res.send('here we go 8001');
+    res.send('here we go: finance');
 })
 
 app.listen(port, () => {
