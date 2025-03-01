@@ -1,19 +1,23 @@
-import dynamoose from "dynamoose";
+import { DynamoDB } from '@aws-sdk/client-dynamodb';
+import * as dynamoose from 'dynamoose';
+import dotenv from 'dotenv';
 
-const isLocal = process.env.NODE_ENV === "development";
+// Load environment variables from .env file
+dotenv.config();
 
-// Create new DynamoDB instance
-const ddb =  new dynamoose.aws.ddb.DynamoDB({
-    "credentials": {
-      "accessKeyId": "AKID",
-      "secretAccessKey": "SECRET"
-    },
-    "region": process.env.AWS_REGION ?? "us-east-1"
-  }) 
-  
-  dynamoose.aws.ddb.local();
-// Set DynamoDB instance to the Dynamoose DDB instance
-dynamoose.aws.ddb.set(ddb);
-console.log(`DynamoDB connected to ${isLocal ? "local instance" : "AWS"}`);
+const setupDynamoDB = () => {
+  if (process.env.NODE_ENV === 'development') {
+    dynamoose.aws.ddb.local("http://localhost:8000");
+  } else {
+    const client = new DynamoDB({
+      region: process.env.AWS_REGION,
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+      },
+    });
+    dynamoose.aws.ddb.set(client);
+  }
+};
 
-export default ddb;
+export default setupDynamoDB;
