@@ -5,7 +5,7 @@ dotenv.config();
 const app: Application = express();
 
 
-const port = process.env.PORT || 8003;
+const port = process.env.PORT || 5003;
 
 app.use('/', (req: Request, res: Response, next: NextFunction) => {
 

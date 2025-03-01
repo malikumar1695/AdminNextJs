@@ -6,7 +6,7 @@ dotenv.config();
 
 const app: Application = express();
 
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 5001;
 
 app.use('/', (req: Request, res: Response, next: NextFunction) => {
     res.send('here we go: students')
