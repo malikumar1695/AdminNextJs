@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { SidebarProvider } from "@/context/SidebarContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import ReactQueryProvider from "../components/reactqueryprovider/ReactQueryProvider";
 
 const outfit = Outfit({
   variable: "--font-outfit-sans",
@@ -21,7 +22,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${outfit.variable} dark:bg-gray-900`}>
         <ThemeProvider>
-          <SidebarProvider>{children}</SidebarProvider>
+          <SidebarProvider>
+            <ReactQueryProvider>
+              {children}
+            </ReactQueryProvider>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>

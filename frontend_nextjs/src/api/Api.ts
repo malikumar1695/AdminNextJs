@@ -1,6 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { store } from "./store/store";
-import MessageFormDto from "../viewmodels/MessageFormDto";
 import { addError, setLoading } from "./error/errorSlice";
 
 axios.defaults.baseURL = "http://localhost:5000"; //"https://quransiteapis.azurewebsites.net/api";//"https://localhost:7065/api";
@@ -103,14 +102,14 @@ const request = {
   put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
   del: <T>(url: string) => axios.delete<T>(url).then(responseBody),
 };
-const email = {
-  postContactUsForm: (url: string, body: MessageFormDto) =>
-    request.post<boolean>(`${url}`, body),
+// const email = {
+//   postContactUsForm: (url: string, body: MessageFormDto) =>
+//     request.post<boolean>(`${url}`, body),
 
-};
+// };
 
 const Api = {
-  email,
+  //email,
 };
 
-export default Api;
+export default axios;
